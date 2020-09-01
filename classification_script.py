@@ -27,4 +27,6 @@ df_OutputArray, levels = pd.factorize(df_OutputArray)
 
 clf_svm_SVC_model(df_InputArray, df_OutputArray)
 clf_dec_tree_model(df_InputArray, df_OutputArray)
-clf_K_nearest_neighbour_model(df_InputArray, df_OutputArray)
+clf_K_nearest_neighbour_model(df_InputArray, df_OutputArray, neighbors=3)
+clf_K_nearest_neighbour_model(df_InputArray, df_OutputArray, neighbors=5)
+clf_K_nearest_neighbour_model(df_InputArray, df_OutputArray, neighbors=7)

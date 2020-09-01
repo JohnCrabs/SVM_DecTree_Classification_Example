@@ -79,13 +79,13 @@ def clf_dec_tree_model(input_array, output_array):
                                                    "Decision Tree Classification:")
 
 
-def clf_K_nearest_neighbour_model(input_array, output_array):
+def clf_K_nearest_neighbour_model(input_array, output_array, neighbors=5):
     x_train, x_test, y_train, y_test = train_test_split(input_array, output_array, train_size=0.2)
     scaler = MinMaxScaler()
     x_train = scaler.fit_transform(x_train)
     x_test = scaler.transform(x_test)
 
-    clf = KNeighborsClassifier()
+    clf = KNeighborsClassifier(n_neighbors=neighbors)
     clf.fit(x_train, y_train)
     save_clf("clf/knn/knn", clf)
 
