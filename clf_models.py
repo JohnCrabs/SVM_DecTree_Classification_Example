@@ -1,5 +1,6 @@
 from sklearn import svm
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn import metrics
@@ -76,3 +77,18 @@ def clf_dec_tree_model(input_array, output_array):
     # Make Predictions and Estimate Classsifier
     make_predictions_and_error_estimation_printing(clf, x_train, x_test, y_train, y_test,
                                                    "Decision Tree Classification:")
+
+
+def clf_K_nearest_neighbour_model(input_array, output_array):
+    x_train, x_test, y_train, y_test = train_test_split(input_array, output_array, train_size=0.2)
+    scaler = MinMaxScaler()
+    x_train = scaler.fit_transform(x_train)
+    x_test = scaler.transform(x_test)
+
+    clf = KNeighborsClassifier()
+    clf.fit(x_train, y_train)
+    save_clf("clf/knn/knn", clf)
+
+    # Make Predictions and Estimate Classsifier
+    make_predictions_and_error_estimation_printing(clf, x_train, x_test, y_train, y_test,
+                                                   "K Neighbors Classifier:")
